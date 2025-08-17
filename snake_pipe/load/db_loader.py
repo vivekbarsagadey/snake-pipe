@@ -58,7 +58,7 @@ class DatabaseLoader:
             # Load data in batches if batch_size is specified
             if batch_size and len(df) > batch_size:
                 for i in range(0, len(df), batch_size):
-                    batch_df = df.iloc[i: i + batch_size]
+                    batch_df = df.iloc[i : i + batch_size]
                     batch_if_exists = "append" if i > 0 else if_exists
 
                     batch_df.to_sql(name=table_name, con=self.engine, if_exists=batch_if_exists, index=index, schema=schema)

@@ -80,7 +80,7 @@ def chunk_list(data: List[Any], chunk_size: int) -> List[List[Any]]:
     """
     chunks = []
     for i in range(0, len(data), chunk_size):
-        chunks.append(data[i: i + chunk_size])
+        chunks.append(data[i : i + chunk_size])
     return chunks
 
 
