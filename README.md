@@ -114,14 +114,55 @@ result = (pipeline
     .run())
 ```
 
+## 💡 Example Use Cases
+
+### Data Migration Pipeline
+
+```python
+# Migrate data from legacy CSV to modern database
+pipeline = Pipeline("data_migration")
+result = (pipeline
+    .extract_from_csv("legacy_data.csv")
+    .clean_data(
+        remove_duplicates=True,
+        standardize_columns={'case': 'lower'}
+    )
+    .validate_data(
+        check_required_columns=['id', 'email'],
+        check_data_types={'id': 'int'}
+    )
+    .load_to_database("users", if_exists="append")
+    .run())
+```
+
+### API Data Processing
+
+```python
+# Extract from API, process, and save to warehouse
+pipeline = Pipeline("api_processing")
+result = (pipeline
+    .extract_from_api("/users", "https://api.example.com", "your-api-key")
+    .enrich_data(
+        add_datetime_features={'date_column': 'signup_date'},
+        add_calculated_column={
+            'column_name': 'user_age_days',
+            'calculation': lambda df: (pd.Timestamp.now() - pd.to_datetime(df['signup_date'])).dt.days
+        }
+    )
+    .load_to_csv("enriched_users.csv")
+    .run())
+```
+
 ## 📊 Data Sources & Destinations
 
-### Extract From:
+### Extract From
+
 - **CSV Files**: `extract_from_csv(file_path)`
 - **Databases**: `extract_from_database(query, connection_string)`
 - **REST APIs**: `extract_from_api(endpoint, base_url, api_key)`
 
-### Load To:
+### Load To
+
 - **CSV Files**: `load_to_csv(filename)`
 - **Excel Files**: `load_to_excel(filename)`
 - **Databases**: `load_to_database(table_name)`
@@ -130,6 +171,7 @@ result = (pipeline
 ## 🔧 Transformations
 
 ### Data Cleaning
+
 ```python
 .clean_data(
     remove_duplicates={'subset': ['id']},
@@ -140,6 +182,7 @@ result = (pipeline
 ```
 
 ### Data Validation
+
 ```python
 .validate_data(
     check_required_columns=['id', 'name'],
@@ -150,6 +193,7 @@ result = (pipeline
 ```
 
 ### Data Enrichment
+
 ```python
 .enrich_data(
     add_datetime_features={'date_column': 'created_at'},
@@ -176,7 +220,7 @@ snake-pipe --help
 
 ## 🏗️ Project Structure
 
-```
+```text
 snake-pipe/
 ├── snake_pipe/              # Main package
 │   ├── __init__.py
@@ -218,7 +262,30 @@ uv run pytest --cov=snake_pipe --cov-report=html
 
 # Run specific test file
 uv run pytest tests/test_pipeline.py
+
+# Run tests with verbose output
+uv run pytest -v
 ```
+
+## 🎯 Quick Demo
+
+Try the included sample pipeline:
+
+```bash
+# 1. Install dependencies
+uv sync
+
+# 2. Run the sample pipeline with included data
+uv run python scripts/run_pipeline.py \
+  --input scripts/sample_data.csv \
+  --output processed_sample.csv \
+  --verbose
+
+# 3. Check the results
+head processed_sample.csv
+```
+
+This will process the sample employee data, clean it, and save the results to `processed_sample.csv`.
 
 ## 🔧 Development
 
@@ -285,7 +352,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙋‍♂️ Support
 
-- 📧 Email: vivek@example.com
+- 📧 Email: <vivek@example.com>
 - 🐛 Issues: [GitHub Issues](https://github.com/vivekbarsagadey/snake-pipe/issues)
 - 📖 Documentation: [GitHub Repository](https://github.com/vivekbarsagadey/snake-pipe)
 
