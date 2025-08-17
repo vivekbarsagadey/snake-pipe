@@ -1,0 +1,25 @@
+# Flake8 configuration file
+[flake8]
+max-line-length = 200
+extend-ignore =
+    E203,
+    E501,
+    W503,
+    W504,
+    E231
+exclude =
+    .git,
+    __pycache__,
+    .venv,
+    venv,
+    build,
+    dist,
+    .eggs,
+    *.egg-info,
+    .mypy_cache,
+    .pytest_cache
+per-file-ignores =
+    __init__.py:F401,
+    tests/*:D103,D100,D101,D102
+max-complexity = 15
+docstring-convention = numpy

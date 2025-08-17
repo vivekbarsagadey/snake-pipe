@@ -81,21 +81,21 @@ result = (pipeline
         query="SELECT * FROM users WHERE created_date >= '2024-01-01'",
         connection_string="postgresql://user:pass@localhost:5432/mydb"
     )
-    
+
     # Clean the data
     .clean_data(
         remove_duplicates={'subset': ['email']},
         handle_missing_values={'strategy': 'drop'},
         standardize_columns={'case': 'lower'}
     )
-    
+
     # Validate data quality
     .validate_data(
         check_required_columns=['id', 'email', 'name'],
         check_data_types={'id': 'int', 'email': 'string'},
         check_unique_values=['id', 'email']
     )
-    
+
     # Enrich the data
     .enrich_data(
         add_datetime_features={'datetime_column': 'created_date'},
@@ -104,13 +104,13 @@ result = (pipeline
             'calculation': lambda df: df['first_name'] + ' ' + df['last_name']
         }
     )
-    
+
     # Load to warehouse
     .load_to_database(
         table_name="processed_users",
         if_exists="replace"
     )
-    
+
     .run())
 ```
 
@@ -289,13 +289,40 @@ This will process the sample employee data, clean it, and save the results to `p
 
 ## 🔧 Development
 
+This project uses comprehensive linting and formatting tools with a 200-character line length configuration.
+
+### Quick Development Commands
+
 ```bash
 # Install development dependencies
-uv sync --extra dev
+uv sync
 
-# Format code
-uv run black snake_pipe/
-uv run isort snake_pipe/
+# Auto-format code (200 char line length)
+uv run black --line-length=200 snake_pipe/
+uv run isort --profile=black --line-length=200 snake_pipe/
+
+# Run linting
+uv run flake8 snake_pipe/
+uv run pylint snake_pipe/
+uv run mypy snake_pipe/
+
+# Run pre-commit hooks on all files
+uv run pre-commit run --all-files
+
+# Run tests with coverage
+uv run pytest --cov=snake_pipe --cov-report=html
+```
+
+See [DEVELOPMENT.md](DEVELOPMENT.md) for detailed development instructions.
+
+### Building & Testing
+
+```bash
+# Build the package
+uv build
+
+# Install in development mode
+uv pip install -e .
 
 # Type checking
 uv run mypy snake_pipe/
@@ -329,18 +356,18 @@ LOG_LEVEL=INFO
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Add tests for new functionality
-5. Run the test suite (`uv run pytest`)
-6. Format your code (`uv run black .`)
-7. Commit your changes (`git commit -m 'Add amazing feature'`)
-8. Push to the branch (`git push origin feature/amazing-feature`)
-9. Open a Pull Request
+1. Create a feature branch (`git checkout -b feature/amazing-feature`)
+1. Make your changes
+1. Add tests for new functionality
+1. Run the test suite (`uv run pytest`)
+1. Format your code (`uv run black .`)
+1. Commit your changes (`git commit -m 'Add amazing feature'`)
+1. Push to the branch (`git push origin feature/amazing-feature`)
+1. Open a Pull Request
 
 ## 📋 Requirements
 
-- Python 3.10+
+- Python 3.11+
 - pandas >= 2.0.0
 - SQLAlchemy >= 2.0.0
 - Pydantic >= 2.0.0
@@ -358,13 +385,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🎯 Roadmap
 
-- [ ] Web UI for pipeline monitoring
-- [ ] Support for streaming data
-- [ ] Integration with Apache Airflow
-- [ ] More data warehouse connectors
-- [ ] Docker containerization
-- [ ] Kubernetes deployment templates
+- \[ \] Web UI for pipeline monitoring
+- \[ \] Support for streaming data
+- \[ \] Integration with Apache Airflow
+- \[ \] More data warehouse connectors
+- \[ \] Docker containerization
+- \[ \] Kubernetes deployment templates
 
----
+______________________________________________________________________
 
 Made with ❤️ by [Vivek Barsagadey](https://github.com/vivekbarsagadey)
