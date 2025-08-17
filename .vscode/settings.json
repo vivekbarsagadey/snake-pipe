@@ -1,38 +1,85 @@
 {
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "vscode.markdown-language-features"
   },
   "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.insertSpaces": true,
     "editor.rulers": [
       200
     ],
     "editor.tabSize": 4
   },
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "[toml]": {
+    "editor.defaultFormatter": null
   },
+  "[yaml]": {
+    "editor.defaultFormatter": null
+  },
+  "black-formatter.args": [
+    "--line-length=200"
+  ],
+  "cSpell.enabled": true,
+  "cSpell.showAutocompleteSuggestions": true,
+  "cSpell.showCommandsInEditorContextMenu": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": true
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
   },
   "editor.formatOnSave": true,
+  "files.associations": {
+    "*.toml": "toml",
+    "*.yaml": "yaml",
+    "*.yml": "yaml"
+  },
   "files.exclude": {
     "**/*.pyc": true,
     "**/__pycache__": true,
+    "*.egg-info": true,
+    ".coverage": true,
     ".mypy_cache": true,
-    ".pytest_cache": true
+    ".pytest_cache": true,
+    "build": true,
+    "dist": true,
+    "htmlcov": true
   },
-  "python.defaultInterpreterPath": "./.venv/bin/python",
-  "python.formatting.blackArgs": [
-    "--line-length=200"
+  "flake8.args": [
+    "--max-line-length=200"
   ],
-  "python.formatting.provider": "black",
-  "python.linting.enabled": true,
-  "python.linting.flake8Enabled": true,
-  "python.linting.mypyEnabled": true,
-  "python.linting.pylintEnabled": true,
-  "python.sortImports.args": [
+  "isort.args": [
     "--profile=black",
     "--line-length=200"
-  ]
+  ],
+  "mypy.runUsingActiveInterpreter": true,
+  "pylint.args": [
+    "--max-line-length=200"
+  ],
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.extraPaths": [
+    "./snake_pipe"
+  ],
+  "python.analysis.indexing": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "python.defaultInterpreterPath": "./.venv/bin/python",
+  "python.envFile": "${workspaceFolder}/.env",
+  "python.terminal.activateEnvironment": true,
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "search.exclude": {
+    "**/*.pyc": true,
+    "**/.venv": true,
+    "**/__pycache__": true,
+    "**/venv": true,
+    ".mypy_cache": true,
+    ".pytest_cache": true,
+    "build": true,
+    "dist": true,
+    "htmlcov": true
+  }
 }
