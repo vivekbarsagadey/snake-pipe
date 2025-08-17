@@ -1,0 +1,39 @@
+{
+  "author": "Vivek Barsagadey",
+  "dependencies": {
+    "python": ">=3.11"
+  },
+  "description": "Development configuration for snake-pipe ETL framework",
+  "devDependencies": {
+    "bandit": "latest",
+    "black": "latest",
+    "flake8": "latest",
+    "isort": "latest",
+    "mypy": "latest",
+    "pre-commit": "latest",
+    "pylint": "latest",
+    "pytest": "latest"
+  },
+  "keywords": [
+    "etl",
+    "data-pipeline",
+    "python",
+    "pandas",
+    "sqlalchemy"
+  ],
+  "license": "MIT",
+  "name": "snake-pipe-dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vivekbarsagadey/snake-pipe.git"
+  },
+  "scripts": {
+    "clean": "find . -type d -name '__pycache__' -exec rm -rf {} + && find . -name '*.pyc' -delete",
+    "format": "black snake_pipe/ tests/ scripts/",
+    "lint": "pre-commit run --all-files",
+    "security-check": "bandit -r snake_pipe/",
+    "test": "python -m pytest tests/",
+    "type-check": "mypy snake_pipe/"
+  },
+  "version": "1.0.0"
+}

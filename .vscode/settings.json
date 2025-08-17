@@ -1,0 +1,38 @@
+{
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.insertSpaces": true,
+    "editor.rulers": [
+      200
+    ],
+    "editor.tabSize": 4
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "editor.formatOnSave": true,
+  "files.exclude": {
+    "**/*.pyc": true,
+    "**/__pycache__": true,
+    ".mypy_cache": true,
+    ".pytest_cache": true
+  },
+  "python.defaultInterpreterPath": "./.venv/bin/python",
+  "python.formatting.blackArgs": [
+    "--line-length=200"
+  ],
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.sortImports.args": [
+    "--profile=black",
+    "--line-length=200"
+  ]
+}

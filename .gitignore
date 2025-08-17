@@ -186,7 +186,9 @@ Thumbs.db
 *.csv
 *.xlsx
 *.parquet
-*.json
+# Exclude data JSON files but allow config JSON files
+data/*.json
+logs/*.json
 !scripts/sample_data.csv
 !.env.example
 .history/

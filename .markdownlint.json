@@ -1,0 +1,17 @@
+{
+  "MD013": {
+    "code_blocks": false,
+    "line_length": 200,
+    "tables": false
+  },
+  "MD033": false,
+  "MD034": false,
+  "MD036": false,
+  "MD041": false,
+  "MD046": {
+    "style": "fenced"
+  },
+  "MD048": {
+    "style": "backtick"
+  }
+}

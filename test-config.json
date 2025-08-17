@@ -1,0 +1,6 @@
+{
+  "description": "Test JSON file for pre-commit hooks",
+  "name": "snake-pipe",
+  "test": true,
+  "version": "1.0.0"
+}

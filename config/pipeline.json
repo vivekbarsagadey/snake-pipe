@@ -1,0 +1,81 @@
+{
+  "environments": {
+    "development": {
+      "batch_size": 1000,
+      "data_dir": "./data",
+      "database_url": "sqlite:///data/dev.db",
+      "log_level": "DEBUG",
+      "max_retries": 3,
+      "timeout": 30
+    },
+    "production": {
+      "batch_size": 5000,
+      "data_dir": "${DATA_DIR}",
+      "database_url": "${DATABASE_URL}",
+      "log_level": "WARNING",
+      "max_retries": 5,
+      "timeout": 60
+    },
+    "testing": {
+      "batch_size": 100,
+      "data_dir": "./test_data",
+      "database_url": "sqlite:///:memory:",
+      "log_level": "INFO",
+      "max_retries": 1,
+      "timeout": 10
+    }
+  },
+  "extractors": {
+    "api": {
+      "default_timeout": 30,
+      "enabled": true,
+      "max_retries": 3
+    },
+    "csv": {
+      "chunk_size": 10000,
+      "default_encoding": "utf-8",
+      "enabled": true
+    },
+    "database": {
+      "connection_pool_size": 5,
+      "enabled": true,
+      "query_timeout": 300
+    }
+  },
+  "loaders": {
+    "database": {
+      "enabled": true,
+      "if_exists": "append",
+      "method": "multi"
+    },
+    "file": {
+      "compression": "gzip",
+      "enabled": true,
+      "formats": [
+        "csv",
+        "json",
+        "parquet"
+      ]
+    },
+    "warehouse": {
+      "default_warehouse": "snowflake",
+      "enabled": false
+    }
+  },
+  "transformers": {
+    "cleaners": {
+      "handle_missing_values": "drop",
+      "remove_duplicates": true,
+      "standardize_columns": true
+    },
+    "enrichers": {
+      "add_timestamps": true,
+      "compute_derived_fields": true
+    },
+    "validators": {
+      "data_quality_checks": true,
+      "null_threshold": 0.1,
+      "schema_validation": true
+    }
+  }
+}
