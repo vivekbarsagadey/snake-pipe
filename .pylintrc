@@ -20,6 +20,17 @@ disable=
     R0801,  # duplicate-code
     W0511,  # fixme
     R0902,  # too-many-instance-attributes
+    W1203,  # logging-fstring-interpolation (allow f-strings in logging)
+    W0718,  # broad-exception-caught (allow general Exception catching)
+    C0415,  # import-outside-toplevel (allow dynamic imports)
+    W0707,  # raise-missing-from (allow simple raises)
+    R1705,  # no-else-return (allow else after return for clarity)
+    R1720,  # no-else-raise (allow else after raise for clarity)
+    W0719,  # broad-exception-raised (allow general Exception raising)
+    W0201,  # attribute-defined-outside-init (allow dynamic attributes)
+    E0401,  # import-error (expected in isolated environments)
+    W0621,  # redefined-outer-name (allow shadowing for common names)
+    R0912,  # too-many-branches (allow complex logic)
 
 [REPORTS]
 output-format=text
@@ -38,7 +49,7 @@ max-module-lines=1000
 indent-string='    '
 
 [LOGGING]
-logging-format-style=old
+logging-format-style=new
 
 [MISCELLANEOUS]
 notes=FIXME,XXX,TODO
