@@ -42,7 +42,7 @@ Database Manager (Plugin Architecture)
             │
             ▼
 Pluggable Database Backends
-├── Neo4j (Graph relationships & dependencies)
+├── NebulaGraph (Graph relationships & dependencies)
 ├── PostgreSQL (Structured relational data)
 ├── Vector Database (Semantic search capabilities)
 ├── Elasticsearch (Full-text search & analytics)
@@ -233,27 +233,6 @@ Ingestion Tracking System
 - **Rollback Capabilities**: Quick recovery from problematic deployments
 
 
-## 🔮 Future Roadmap
-
-### Phase 1: Core Pipeline (Current)
-- Basic ETL functionality with PostgreSQL and Neo4j support
-- File watcher integration for real-time processing
-- Comprehensive error handling and logging
-
-### Phase 2: Advanced Analytics
-- Vector database integration for semantic search
-- Machine learning pipeline for code analysis
-- Advanced visualization and reporting dashboards
-
-### Phase 3: Enterprise Features
-- Multi-tenant support with data isolation
-- Advanced security and compliance features
-- API gateway for external integrations
-
-### Phase 4: AI Integration
-- LLM-powered code analysis and recommendations
-- Automated documentation generation
-- Intelligent code refactoring suggestions
 
 ## 📝 Technical Standards
 

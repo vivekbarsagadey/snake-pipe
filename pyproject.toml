@@ -30,6 +30,8 @@ dependencies = [
     "requests>=2.31.0",
     "openpyxl>=3.1.0",
     "psycopg2-binary>=2.9.0",
+    "watchdog>=6.0.0",
+    "psutil>=7.0.0",
 ]
 
 [project.optional-dependencies]
@@ -85,6 +87,7 @@ dev-dependencies = [
     "pre-commit>=3.0.0",
     "mdformat>=0.7.0",
     "mdformat-tables>=0.4.0",
+    "pytest-asyncio>=1.1.0",
 ]
 
 [tool.black]
@@ -177,9 +180,12 @@ addopts = [
     "--cov-report=html",
     "--cov-report=xml",
 ]
+asyncio_mode = "auto"
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
     "integration: marks tests as integration tests",
+    "asyncio: marks tests as async",
+    "performance: marks tests as performance tests",
 ]
 
 [tool.mypy]
